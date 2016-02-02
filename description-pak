@@ -1,0 +1,5 @@
+boot.ini and display.sh for ODROID-C2
+
+
+Provides boot.ini with resolution setup and other bootloader configurations
+as well the display.sh file needed to address the onboot resolution.

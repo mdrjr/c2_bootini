@@ -1,0 +1,10 @@
+#!/bin/bash
+for x in $(cat /proc/cmdline); do
+        case ${x} in
+                m_bpp=*) export bpp=${x#*=} ;;
+        esac
+done
+
+if [ "$bpp" = "32" ]; then
+	echo d01068b4 0x7fc0 > /sys/kernel/debug/aml_reg/paddr
+fi
