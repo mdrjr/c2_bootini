@@ -1,7 +1,5 @@
 #!/bin/sh
 
-set -x
-
 for x in $(cat /proc/cmdline); do
         case ${x} in
                 m_bpp=*) export bpp=${x#*=} ;;
