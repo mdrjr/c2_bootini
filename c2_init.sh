@@ -17,13 +17,14 @@ common_display_setup() {
         M="0 0 $(($X - 1)) $(($Y - 1))"
         Y_VIRT=$(($Y * 2))
         fbset -fb /dev/fb0 -g $X $Y $X $Y_VIRT $bpp
-        fbset -fb /dev/fb1 -g 32 32 32 32 32
         echo $mode > /sys/class/display/mode
         echo 0 > /sys/class/graphics/fb0/free_scale
         echo 1 > /sys/class/graphics/fb0/freescale_mode
         echo $M > /sys/class/graphics/fb0/free_scale_axis
         echo $M > /sys/class/graphics/fb0/window_axis
+
         echo 0 > /sys/class/graphics/fb1/free_scale
+        echo 1 > /sys/class/graphics/fb1/freescale_mode
         if [ "$bpp" = "32" ]; then
             echo d01068b4 0x7fc0 > /sys/kernel/debug/aml_reg/paddr
         fi
