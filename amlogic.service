@@ -1,0 +1,14 @@
+[Unit]
+Description="ODROID-C2 Amlogic Display Configuration"
+
+DefaultDependencies=no
+Requires=sysinit.target
+After=sysinit.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/c2_init.sh
+
+[Install]
+WantedBy=basic.target
+WantedBy=sysinit.target
