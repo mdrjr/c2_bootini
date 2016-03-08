@@ -4,10 +4,10 @@ PREREQ=""
 
 prereqs()
 {
-    echo "\$PREREQ"
+    echo "$PREREQ"
 }
 
-case \$1 in
+case $1 in
 # get pre-requisites
 prereqs)
     prereqs
@@ -18,10 +18,10 @@ esac
 
 enable_display()
 {
-    for x in \$(cat /proc/cmdline); do
-            case \${x} in
-                    m_bpp=*) export bpp=\${x#*=} ;;
-                    hdmimode=*) export mode=\${x#*=} ;;
+    for x in $(cat /proc/cmdline); do
+            case ${x} in
+                    m_bpp=*) export bpp=${x#*=} ;;
+                    hdmimode=*) export mode=${x#*=} ;;
             esac
     done
 
@@ -29,26 +29,26 @@ enable_display()
     DISP_CAP=/sys/class/amhdmitx/amhdmitx0/disp_cap
     DISP_MODE=/sys/class/display/mode
 
-    echo \$mode > \$DISP_MODE
+    echo $mode > $DISP_MODE
 
     common_display_setup() {
-            M="0 0 \$((\$X - 1)) \$((\$Y - 1))"
-            Y_VIRT=\$((\$Y * 2))
-            fbset -fb /dev/fb0 -g \$X \$Y \$X \$Y_VIRT \$bpp
-            echo \$mode > /sys/class/display/mode
+            M="0 0 $(($X - 1)) $(($Y - 1))"
+            Y_VIRT=$(($Y * 2))
+            fbset -fb /dev/fb0 -g $X $Y $X $Y_VIRT $bpp
+            echo $mode > /sys/class/display/mode
             echo 0 > /sys/class/graphics/fb0/free_scale
             echo 1 > /sys/class/graphics/fb0/freescale_mode
-            echo \$M > /sys/class/graphics/fb0/free_scale_axis
-            echo \$M > /sys/class/graphics/fb0/window_axis
+            echo $M > /sys/class/graphics/fb0/free_scale_axis
+            echo $M > /sys/class/graphics/fb0/window_axis
 
             echo 0 > /sys/class/graphics/fb1/free_scale
             echo 1 > /sys/class/graphics/fb1/freescale_mode
-            if [ "\$bpp" = "32" ]; then
+            if [ "$bpp" = "32" ]; then
                 echo d01068b4 0x7fc0 > /sys/kernel/debug/aml_reg/paddr
             fi
     }
 
-    case \$mode in
+    case $mode in
             480*)
                 export X=720
                 export Y=480
