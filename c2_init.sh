@@ -87,10 +87,6 @@ case $mode in
 			export X=1360
 			export Y=768
 			;;
-		1366x768p60hz*)
-			export X=1366
-			export Y=768
-			;;
 		1440x900p60hz*)
 			export X=1440
 			export Y=900
