@@ -6,4 +6,4 @@ install:
 	mkdir -p /usr/share/lightdm/lightdm.conf.d
 	install 10-odroidc2.conf /usr/share/lightdm/lightdm.conf.d
 	install 10-odroid.rules /etc/udev/rules.d
-	
+	install blacklist-spi.conf /etc/modprobe.d
