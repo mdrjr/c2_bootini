@@ -5,8 +5,7 @@ KERNEL=="ump",SUBSYSTEM=="ump",MODE="0777"
 # Misc video rules
 KERNEL=="event*", SUBSYSTEM=="input", MODE="0777"
 KERNEL=="CEC", MODE="0777"
-KERNEL=="amvideo*", MODE="0666"
-KERNEL=="amstream*", MODE="0666"
+KERNEL=="am*", MODE="0666"
 
 # Automatic Disk Scheduler
 ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0",ATTR{queue/scheduler}="noop"
