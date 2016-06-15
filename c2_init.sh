@@ -115,6 +115,10 @@ case $mode in
 			export X=2560
 			export Y=1600
 			;;
+		3440x1440p60hz*)
+			export X=3440
+			export Y=1440
+			;;
 esac
 
 common_display_setup
