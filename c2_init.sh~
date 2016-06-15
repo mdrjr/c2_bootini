@@ -25,6 +25,9 @@ common_display_setup() {
 
         echo 0 > /sys/class/graphics/fb1/free_scale
         echo 1 > /sys/class/graphics/fb1/freescale_mode
+        if [ "$bpp" = "32" ]; then
+            echo d01068b4 0x7fc0 > /sys/kernel/debug/aml_reg/paddr
+        fi
 }
 
 case $mode in
