@@ -4,6 +4,7 @@ for x in $(cat /proc/cmdline); do
         case ${x} in
                 m_bpp=*) export bpp=${x#*=} ;;
                 hdmimode=*) export mode=${x#*=} ;;
+		modeline=*) export modeline=${x#*=} ;;
         esac
 done
 
@@ -31,6 +32,10 @@ common_display_setup() {
 }
 
 case $mode in
+		custombuilt*)
+			export X=`echo $modeline | cut -f1 -d","`
+			export Y=`echo $modeline | cut -f2 -d","`
+			;;
 		480*) 
 			export X=720 
 			export Y=480 
