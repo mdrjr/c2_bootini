@@ -13,7 +13,9 @@ DISP_CAP=/sys/class/amhdmitx/amhdmitx0/disp_cap
 DISP_MODE=/sys/class/display/mode
 
 # if setenv nographics "1" in boot.ini then this needs to fail
-[[ -f $DISP_MODE ]] || exit 0
+if [ ! -f $DISP_MODE ]; then
+	exit 0
+fi
 
 echo $mode > $DISP_MODE
 
