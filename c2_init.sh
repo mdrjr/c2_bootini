@@ -135,6 +135,13 @@ esac
 common_display_setup
 
 # Console unblack
-echo 0 > /sys/class/graphics/fb0/blank
-echo 0 > /sys/class/graphics/fb1/blank
-
+case $mode in
+	*cvbs*|480i*|576i*|1080i*)
+		echo 0 > /sys/class/graphics/fb0/blank
+		echo 1 > /sys/class/graphics/fb1/blank
+		;;
+ 	*)
+		echo 0 > /sys/class/graphics/fb0/blank
+ 		echo 0 > /sys/class/graphics/fb1/blank
+		;;
+esac
