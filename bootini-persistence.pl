@@ -40,7 +40,7 @@ else {
     logger( "error", "Missing persistent configuration file - $mediaboot/$config. Will not touch $bootini" );
     exit;
 }
-print Dumper( \%ini );
+#print Dumper( \%ini );
 
 #load boot.ini into an array and perform changes on it in memory
 my @boot;
