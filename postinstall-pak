@@ -5,14 +5,24 @@
 cp /media/boot/boot.ini /media/boot/boot.ini.old
 cp /usr/share/bootini/boot.ini /media/boot/boot.ini
 
+#copy the default settings file if it doesn't exist
+if [ ! -f "/media/boot/boot.ini.default" ]; then
+   cp /usr/share/bootini/boot.ini.default /media/boot/boot.ini.default
+fi
+
+#copy over user's custom settings (if any) from boot.ini.default
+/usr/share/bootini/bootini-persistence.pl | tee /tmp/bootini-persistence.txt
+
 /usr/sbin/update-initramfs -c -k `uname -r`
 mkimage -A arm64 -O linux -T ramdisk -C none -a 0 -e 0 -n "uInitrd" -d /boot/initrd.img-`uname -r` /boot/uInitrd-`uname -r`
 cp /boot/uInitrd-`uname -r` /media/boot/uInitrd
 
 echo "A new boot.ini is installed." 
 echo "Any changes to boot.ini is lost, such as display configuration" 
+echo "Persistent custom settings from /media/boot/boot.ini.default have been restored"
 echo "For reference your old boot.ini is saved to /media/boot/boot.ini.old"
 
 dialog --msgbox "A new boot.ini is installed.
 Any changes to boot.ini is lost, such as display configuration
+Persistent custom settings from /media/boot/boot.ini.default have been restored
 For reference your old boot.ini is saved to /media/boot/boot.ini.old" 0 0
