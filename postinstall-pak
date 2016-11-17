@@ -11,7 +11,7 @@ if [ ! -f "/media/boot/boot.ini.default" ]; then
 fi
 
 #copy over user's custom settings (if any) from boot.ini.default
-/usr/share/bootini/bootini-persistence.pl | tee /tmp/bootini-persistence.txt
+/usr/share/bootini/bootini-persistence.pl 2>&1 | tee /tmp/bootini-persistence.txt
 
 /usr/sbin/update-initramfs -c -k `uname -r`
 mkimage -A arm64 -O linux -T ramdisk -C none -a 0 -e 0 -n "uInitrd" -d /boot/initrd.img-`uname -r` /boot/uInitrd-`uname -r`
