@@ -1,0 +1,41 @@
+[general]
+#This configuration is parsed by the bootini-persistence script
+#uncomment the section you want to override in boot.ini and set the desired value
+
+####################
+# C2 configuration #
+####################
+
+#C2 resolution
+#m=1080p60hz
+
+#C2 BPP Mode
+#m_bpp=32
+
+#C2 HDMI/DVI/VGA mode
+#vout=dvi
+
+#C2 HDMI HotPlug Detection control
+#hpd=true
+
+#C2 Console
+#condev=console=ttyS0,115200n8 console=tty0
+
+#C2 Meson timer
+#mesontimer=1
+
+#C2 nographics
+#nographics=0
+
+#C2 monitor output
+#monitor_onoff=false
+
+#C2 maxcpus
+#maxcpus=4
+
+#C2 Max frequency
+#max_freq=1536
+
+#C2 bootargs
+#bootargs=root=UUID=e139ce78-9841-40fe-8823-96a304a09859 rootwait ro ${condev} no_console_suspend hdmimode=${m} ${comde} m_bpp=${m_bpp} vout=${vout} fsck.repair=yes net.ifnames=0 elevator=noop disablehpd=${hpd} max_freq=${max_freq} maxcpus=${maxcpus} monitor_onoff=${monitor_onoff}
+
