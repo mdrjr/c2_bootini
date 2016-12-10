@@ -38,7 +38,11 @@ case $mode in
 			export X=`echo $modeline | cut -f1 -d","`
 			export Y=`echo $modeline | cut -f2 -d","`
 			;;
-		480*) 
+		480x800*)
+			export X=480
+			export Y=800
+			;;
+		480i*|480p*) 
 			export X=720 
 			export Y=480 
 			;;
