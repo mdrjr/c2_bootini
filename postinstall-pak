@@ -27,4 +27,4 @@ Any changes to boot.ini is lost, such as display configuration
 Persistent custom settings from /media/boot/boot.ini.default have been restored
 For reference your old boot.ini is saved to /media/boot/boot.ini.old" 0 0
 
-usermod -a -G sys odroid
+usermod -a -G sys odroid || true
